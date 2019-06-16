@@ -55,7 +55,14 @@ namespace YoutubeExplode.Tests
 
         public static IEnumerable GetVideoIds_Valid_Available_Unplayable()
         {
-            yield return new TestCaseData("p3dDcKOFXQg"); // requires purchase
+            // Include nested
+            foreach (var testCaseData in GetVideoIds_Valid_Available_Unplayable_RequiresPurchase())
+                yield return testCaseData;
+        }
+
+        public static IEnumerable GetVideoIds_Valid_Available_Unplayable_RequiresPurchase()
+        {
+            yield return new TestCaseData("p3dDcKOFXQg");
         }
 
         public static IEnumerable GetVideoIds_Valid_Available_Playable()
@@ -68,7 +75,6 @@ namespace YoutubeExplode.Tests
             yield return new TestCaseData("5VGm0dczmHc"); // rating not allowed
             yield return new TestCaseData("ZGdLIwrGHG8"); // unlisted
             yield return new TestCaseData("H1O_-JVbl_k"); // very large video
-            yield return new TestCaseData("NgTdNd5lkvY"); // controversial video
             yield return new TestCaseData("rsAAeyAr-9Y"); // recording of a live stream
 
             // Include nested
@@ -119,7 +125,6 @@ namespace YoutubeExplode.Tests
             yield return new TestCaseData("PLWwAypAcFRgKFlxtLbn_u14zddtDJj3mk"); // large
             yield return new TestCaseData("RD1hu8-y6fKg0"); // video mix
             yield return new TestCaseData("RDMMU-ty-2B02VY"); // my mix
-            yield return new TestCaseData("RDEMNJhLy4rECJ_fG8NL-joqsg"); // music mix
             yield return new TestCaseData("ULl6WWX-BgIiE"); // channel video mix
             yield return new TestCaseData("UUTMt7iMWa7jy0fNXIktwyLA"); // user uploads
             yield return new TestCaseData("PUTMt7iMWa7jy0fNXIktwyLA"); // popular user uploads

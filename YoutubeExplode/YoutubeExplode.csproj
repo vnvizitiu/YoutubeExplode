@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.1;netstandard2.0;net45;netcoreapp1.0</TargetFrameworks>
-    <Version>4.6.5</Version>
+    <TargetFrameworks>net45;netstandard1.1;netstandard2.0</TargetFrameworks>
+    <Version>4.7.2</Version>
     <Company>Tyrrrz</Company>
     <Authors>$(Company)</Authors>
     <Copyright>Copyright (C) Alexey Golub</Copyright>
@@ -10,13 +10,14 @@
     <PackageTags>youtube video download playlist user channel closed caption tracks subtitles parse extract metadata info net core standard</PackageTags>
     <PackageProjectUrl>https://github.com/Tyrrrz/YoutubeExplode</PackageProjectUrl>
     <PackageReleaseNotes>https://github.com/Tyrrrz/YoutubeExplode/blob/master/Changelog.md</PackageReleaseNotes>
-    <PackageLicenseUrl>https://github.com/Tyrrrz/YoutubeExplode/blob/master/License.txt</PackageLicenseUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/Tyrrrz/YoutubeExplode/master/favicon.png</PackageIconUrl>
+    <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Tyrrrz/YoutubeExplode</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
@@ -25,7 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="[0.9.11]" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
 </Project>
