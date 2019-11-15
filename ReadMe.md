@@ -1,9 +1,9 @@
 # YoutubeExplode
 
-[![Build](https://img.shields.io/appveyor/ci/Tyrrrz/YoutubeExplode/master.svg)](https://ci.appveyor.com/project/Tyrrrz/YoutubeExplode)
-[![Tests](https://img.shields.io/appveyor/tests/Tyrrrz/YoutubeExplode/master.svg)](https://ci.appveyor.com/project/Tyrrrz/YoutubeExplode)
-[![NuGet](https://img.shields.io/nuget/v/YoutubeExplode.svg)](https://nuget.org/packages/YoutubeExplode)
-[![NuGet](https://img.shields.io/nuget/dt/YoutubeExplode.svg)](https://nuget.org/packages/YoutubeExplode)
+[![Build](https://github.com/Tyrrrz/YoutubeExplode/workflows/CI/badge.svg?branch=master)](https://github.com/Tyrrrz/YoutubeExplode/actions)
+[![Coverage](https://codecov.io/gh/Tyrrrz/YoutubeExplode/branch/master/graph/badge.svg)](https://codecov.io/gh/Tyrrrz/YoutubeExplode)
+[![Version](https://img.shields.io/nuget/v/YoutubeExplode.svg)](https://nuget.org/packages/YoutubeExplode)
+[![Downloads](https://img.shields.io/nuget/dt/YoutubeExplode.svg)](https://nuget.org/packages/YoutubeExplode)
 [![Donate](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://patreon.com/tyrrrz)
 [![Donate](https://img.shields.io/badge/buymeacoffee-donate-yellow.svg)](https://buymeacoffee.com/tyrrrz)
 
@@ -12,7 +12,6 @@ YoutubeExplode is a library that provides an interface to query metadata of YouT
 ## Download
 
 - [NuGet](https://nuget.org/packages/YoutubeExplode): `dotnet add package YoutubeExplode`
-- [Continuous integration](https://ci.appveyor.com/project/Tyrrrz/YoutubeExplode)
 
 ## Features
 
@@ -30,7 +29,7 @@ YoutubeExplode is a library that provides an interface to query metadata of YouT
 
 ## Screenshots
 
-![](http://www.tyrrrz.me/Projects/YoutubeExplode/Images/1.png)
+![demo](.screenshots/demo.png)
 
 ## Usage
 
@@ -135,14 +134,18 @@ var videoTitle = video.Title; // "Igorrr - Tout Petit Moineau"
 var videoAuthor = video.Author; // "Igorrr Official"
 ```
 
+## Etymology
+
+The "Explode" in YoutubeExplode comes from the name of a PHP function that splits up strings, [`explode()`](https://www.php.net/manual/en/function.explode.php). When I was just starting development on this library, most of the reference source code I read was written in PHP, hence the inspiration for the name.
+
 ## Libraries used
 
-- [AngleSharp](https://github.com/AngleSharp/AngleSharp)
+- [LtGt](https://github.com/Tyrrrz/LtGt)
 - [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
 - [GalaSoft.MVVMLight](http://www.mvvmlight.net)
 - [MaterialDesignInXamlToolkit](https://github.com/ButchersBoy/MaterialDesignInXamlToolkit)
 - [NUnit](https://github.com/nunit/nunit)
-- [Tyrrrz.Extensions](https://github.com/Tyrrrz/Extensions)
+- [Coverlet](https://github.com/tonerdo/coverlet)
 
 ## Donate
 

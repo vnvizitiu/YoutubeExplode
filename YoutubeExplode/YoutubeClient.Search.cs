@@ -22,9 +22,6 @@ namespace YoutubeExplode
         /// <inheritdoc />
         public async Task<IReadOnlyList<Video>> SearchVideosAsync(string query, int maxPages)
         {
-            query.GuardNotNull(nameof(query));
-            maxPages.GuardPositive(nameof(maxPages));
-
             // Get all videos across pages
             var videos = new List<Video>();
             for (var page = 1; page <= maxPages; page++)
@@ -34,12 +31,14 @@ namespace YoutubeExplode
 
                 // Get videos
                 var countDelta = 0;
-                foreach (var videoJson in resultsJson.SelectToken("video").EmptyIfNull())
+                foreach (var videoJson in resultsJson.SelectTokens("video[*]"))
                 {
+                    var epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+
                     // Extract video info
                     var videoId = videoJson.SelectToken("encrypted_id").Value<string>();
                     var videoAuthor = videoJson.SelectToken("author").Value<string>();
-                    var videoUploadDate = videoJson.SelectToken("added").Value<string>().ParseDateTimeOffset("M/d/yy");
+                    var videoUploadDate = epoch + TimeSpan.FromSeconds(videoJson.SelectToken("time_created").Value<long>());
                     var videoTitle = videoJson.SelectToken("title").Value<string>();
                     var videoDescription = videoJson.SelectToken("description").Value<string>();
                     var videoDuration = TimeSpan.FromSeconds(videoJson.SelectToken("length_seconds").Value<double>());
@@ -49,10 +48,11 @@ namespace YoutubeExplode
 
                     // Extract video keywords
                     var videoKeywordsJoined = videoJson.SelectToken("keywords").Value<string>();
-                    var videoKeywords = Regex.Matches(videoKeywordsJoined, @"(?<=(^|\s)(?<q>""?))([^""]|(""""))*?(?=\<q>(?=\s|$))")
+                    var videoKeywords = Regex.Matches(videoKeywordsJoined, "\"[^\"]+\"|\\S+")
                         .Cast<Match>()
                         .Select(m => m.Value)
-                        .Where(s => !s.IsNullOrWhiteSpace())
+                        .Where(s => !string.IsNullOrWhiteSpace(s))
+                        .Select(s => s.Trim('"'))
                         .ToArray();
 
                     // Create statistics and thumbnails
